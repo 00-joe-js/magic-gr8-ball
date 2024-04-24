@@ -8,6 +8,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background: #642889d6;
       }
       #the-ball {
         width: 500px;
@@ -19,16 +20,19 @@
         align-items: center;
         border-radius: 50%;
         cursor: pointer;
+        position: relative;
+        left: 0px;
+        transition: all linear 0.5s;
       }
       #eight {
         display: block;
-        font-size: 7rem;
+        font-size: 8rem;
         color: white;
       }
       #response {
         display: block;
         color: white;
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
     </style>
   </head>
@@ -64,15 +68,27 @@
         return responses[Math.floor(Math.random() * responses.length)];
       };
 
+      const theBallEle = document.getElementById("the-ball");
       const responseEle = document.getElementById("response");
 
-      document.getElementById("the-ball").addEventListener("click", () => {
+      theBallEle.addEventListener("click", () => {
+        let i = 0;
+        const int = setInterval(() => {
+          console.log(
+            theBallEle.style.left
+          );
+          i++;
+          if (i === 10) clearInterval(int);
+          theBallEle.style.left = `${
+            (i * 10) * (i % 2 ? 1 : -1)
+          }px`;
+        }, 50);
         setTimeout(() => {
           if (Math.random() < 0.05) {
             window.location.href = "https://chicory.co/error";
           }
           responseEle.innerText = getResponse();
-        }, 1000);
+        }, 3000);
       });
     </script>
   </body>
