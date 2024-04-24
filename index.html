@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Magic Gr8 Ball</title>
-    <script src="/index.js"></script>
-</head>
-<body>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #the-ball {
+        width: 500px;
+        height: 500px;
+        background: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      #eight {
+        display: block;
+        font-size: 7rem;
+        color: white;
+      }
+      #response {
+        display: block;
+        color: white;
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
     <div id="the-ball">
-        test
+      <span id="eight">8</span>
+      <span id="response"></span>
     </div>
-</body>
+    <script src="/index.js"></script>
+  </body>
 </html>
