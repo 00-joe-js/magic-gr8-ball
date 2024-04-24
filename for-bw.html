@@ -1,0 +1,90 @@
+<div id="gr8ball-wrapper">
+    <style>
+      #gr8ball-wrapper {
+        height: 200px;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #642889d6;
+      }
+      #the-ball {
+        width: 200px;
+        height: 200px;
+        background: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        left: 0px;
+        transition: all linear 0.5s;
+      }
+      #eight {
+        display: block;
+        font-size: 2rem;
+        color: white;
+      }
+      #response {
+        display: block;
+        color: white;
+        font-size: 1rem;
+        padding: 1rem;
+        background: rgb(6, 6, 93);
+      }
+    </style>
+    <div id="the-ball">
+      <span id="eight">8</span>
+      <span id="response"></span>
+    </div>
+    <script>
+      const getResponse = () => {
+        const responses = [
+          "It is certain",
+          "It is decidedly so",
+          "Without a doubt",
+          "Yes definitely",
+          "You may rely on it",
+          "As I see it, yes",
+          "Most likely",
+          "Outlook good",
+          "Yes",
+          "Signs point to yes",
+          "Reply hazy, try again",
+          "Ask again later",
+          "Better not tell you now",
+          "Cannot predict now",
+          "Concentrate and ask again",
+          "Don't count on it",
+          "My reply is no",
+          "My sources say no",
+          "Outlook not so good",
+          "Very doubtful",
+        ];
+        return responses[Math.floor(Math.random() * responses.length)];
+      };
+  
+      const theBallEle = document.getElementById("the-ball");
+      const responseEle = document.getElementById("response");
+  
+      theBallEle.addEventListener("click", () => {
+        let i = 0;
+        const int = setInterval(() => {
+          if (i < 10) {
+            theBallEle.style.left = `${40 * (i % 2 ? 1 : -1)}px`;
+            i++;
+          } else {
+            clearInterval(int);
+            theBallEle.style.left = "0px";
+            if (Math.random() < 0.05) {
+              window.location.href = "https://chicory.co/error";
+            }
+            responseEle.innerText = getResponse();
+          }
+        }, 50);
+      });
+    </script>
+  </div>
+  
