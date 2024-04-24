@@ -74,21 +74,18 @@
       theBallEle.addEventListener("click", () => {
         let i = 0;
         const int = setInterval(() => {
-          console.log(
-            theBallEle.style.left
-          );
-          i++;
-          if (i === 10) clearInterval(int);
-          theBallEle.style.left = `${
-            (i * 10) * (i % 2 ? 1 : -1)
-          }px`;
-        }, 50);
-        setTimeout(() => {
-          if (Math.random() < 0.05) {
-            window.location.href = "https://chicory.co/error";
+          if (i < 10) {
+            theBallEle.style.left = `${40 * (i % 2 ? 1 : -1)}px`;
+            i++;
+          } else {
+            clearInterval(int);
+            theBallEle.style.left = "0px";
+            if (Math.random() < 0.05) {
+              window.location.href = "https://chicory.co/error";
+            }
+            responseEle.innerText = getResponse();
           }
-          responseEle.innerText = getResponse();
-        }, 2500);
+        }, 50);
       });
     </script>
   </body>
